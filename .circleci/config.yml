@@ -10,6 +10,7 @@ workflows:
           name: Go 1.14
           docker-image: circleci/golang:1.13
           run-lint: true
+          with-coverage: true
       - go-test:
           name: Go 1.13
           docker-image: circleci/golang:1.13
@@ -69,6 +70,17 @@ jobs:
           command: go-junit-report < $CIRCLE_ARTIFACTS/report.txt > $CIRCLE_TEST_REPORTS/junit.xml
           when: always
       
+      - when:
+          condition: <<parameters.with-coverage>>
+          steps:
+            - run:
+                name: Verify test coverage
+                command: make test-coverage
+            - run:
+                name: Store coverage results
+                command: cp build/coverage* /tmp/circle-artifacts
+                when: always
+          
       - store_test_results:
           path: /tmp/circle-reports
 
