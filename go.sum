@@ -1,11 +1,11 @@
 github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869/go.mod h1:Ekp36dRnpXw/yCqJaO+ZrUyxD+3VXMFFr56k5XYrpB4=
 github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/eli-darkly/go-coverage-enforcer v0.0.0-20200608225650-65312e37b0f8 h1:mb2dnIaPF0N9Qj/QzZj09dtUsVrV0bq/AhPvj6F8dVs=
-github.com/eli-darkly/go-coverage-enforcer v0.0.0-20200608225650-65312e37b0f8/go.mod h1:ZPO0P0S2VdPf2IAcxZJyUNm7xqPL6rODZ1GZAxyf5TU=
 github.com/kr/pretty v0.2.0/go.mod h1:ipq/a2n7PKx3OHsz4KJII5eveXtPO4qwEXGdVfWzfnI=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
+github.com/launchdarkly-labs/go-coverage-enforcer v0.0.0-20200610003341-8bc77dea293c h1:efBUku8Iniz1FsNaOpr8Q2Nb3zqclxRcmLkyoskWxik=
+github.com/launchdarkly-labs/go-coverage-enforcer v0.0.0-20200610003341-8bc77dea293c/go.mod h1:fJXIR7UJYgdXVmLM40NGl/dbs2Smv+iESsaT9uC4v/s=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

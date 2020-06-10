@@ -28,7 +28,7 @@ benchmarks: build
 	@if grep <build/benchmarks.out '[1-9][0-9]* allocs/op'; then echo "Heap allocations detected in benchmarks!"; exit 1; fi
 
 test-coverage: $(COVERAGE_PROFILE_RAW)
-	if [ -z "$(which go-coverage-enforcer)" ]; then go install github.com/eli-darkly/go-coverage-enforcer; fi
+	if [ -z "$(which go-coverage-enforcer)" ]; then go install github.com/launchdarkly-labs/go-coverage-enforcer; fi
 	go-coverage-enforcer -skipcode "// COVERAGE" -showcode -outprofile $(COVERAGE_PROFILE_FILTERED) $(COVERAGE_PROFILE_RAW)
 	go tool cover -html $(COVERAGE_PROFILE_FILTERED) -o $(COVERAGE_PROFILE_FILTERED_HTML)
 	go tool cover -html $(COVERAGE_PROFILE_RAW) -o $(COVERAGE_PROFILE_RAW_HTML)
