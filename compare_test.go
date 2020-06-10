@@ -33,6 +33,7 @@ var compareTests = []compareTest{
 	{Version{2, 0, 0, "", ""}, Version{2, 1, 0, "", ""}, -1},
 	{Version{2, 1, 0, "", ""}, Version{2, 1, 1, "", ""}, -1},
 
+	{Version{1, 0, 0, "alpha", ""}, Version{1, 0, 0, "alpha", ""}, 0},
 	{Version{1, 0, 0, "", ""}, Version{1, 0, 0, "alpha", ""}, 1},
 	{Version{1, 0, 0, "alpha", ""}, Version{1, 0, 0, "alpha.1", ""}, -1},
 	{Version{1, 0, 0, "alpha.1", ""}, Version{1, 0, 0, "alpha.beta", ""}, -1},
