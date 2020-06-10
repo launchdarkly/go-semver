@@ -21,12 +21,15 @@ workflows:
 jobs:
   go-test:
     parameters:
+      docker-image:
+        type: string
       run-lint:
         type: boolean
         default: false
-      docker-image:
-        type: string
-
+      with-coverage:
+        type: boolean
+        default: false
+    
     docker:
       - image: <<parameters.docker-image>>
         environment:
