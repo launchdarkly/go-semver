@@ -1,6 +1,6 @@
 # LaunchDarkly Semantic Version Package
 
-[![Circle CI](https://circleci.com/gh/launchdarkly/go-semver.svg?style=svg)](https://circleci.com/gh/launchdarkly/go-semver)
+[![Circle CI](https://circleci.com/gh/launchdarkly/go-semver.svg?style=shield)](https://circleci.com/gh/launchdarkly/go-semver) [![Documentation](https://godoc.org/github.com/launchdarkly/go-semver?status.svg)](https://godoc.org/github.com/launchdarkly/go-semver)
 
 ## Overview
 
