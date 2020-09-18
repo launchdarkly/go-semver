@@ -14,7 +14,7 @@ This package has no external dependencies other than the regular Go runtime.
 
 ## Supported Go versions
 
-This version of the project has been tested with Go 1.13 through 1.14.
+This version of the project has been tested with Go 1.14 and above.
 
 ## Contributing
 
