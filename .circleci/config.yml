@@ -7,13 +7,13 @@ workflows:
   workflow:
     jobs:
       - go-test:
-          name: Go 1.14
-          docker-image: circleci/golang:1.13
+          name: Go 1.15
+          docker-image: circleci/golang:1.14
           run-lint: true
           with-coverage: true
       - go-test:
-          name: Go 1.13
-          docker-image: circleci/golang:1.13
+          name: Go 1.14
+          docker-image: circleci/golang:1.14
       - go-test-windows:
           name: Windows
       - benchmarks
@@ -35,11 +35,6 @@ jobs:
         environment:
           CIRCLE_TEST_REPORTS: /tmp/circle-reports
           CIRCLE_ARTIFACTS: /tmp/circle-artifacts
-          COMMON_GO_PACKAGES: >
-            github.com/golang/dep/cmd/dep
-            github.com/jstemmer/go-junit-report
-
-    working_directory: /go/src/gopkg.in/launchdarkly/go-server-sdk-evaluation.v1
 
     steps:
       - checkout
@@ -64,7 +59,6 @@ jobs:
           command: |
             mkdir -p $CIRCLE_TEST_REPORTS
             mkdir -p $CIRCLE_ARTIFACTS
-            trap "go-junit-report < $CIRCLE_ARTIFACTS/report.txt > $CIRCLE_TEST_REPORTS/junit.xml" EXIT
             make test | tee $CIRCLE_ARTIFACTS/report.txt
       
       - run:
@@ -96,21 +90,13 @@ jobs:
 
     environment:
       GOPATH: C:\Users\VssAdministrator\go
-      PACKAGE_PATH: github.com\launchdarkly\go-semver
 
     steps:
       - checkout
       - run: go version
       - run:
-          name: move source
-          command: |
-            go env GOPATH
-            mkdir ${env:GOPATH}\src\${env:PACKAGE_PATH}
-            mv * ${env:GOPATH}\src\${env:PACKAGE_PATH}\
-      - run:
           name: build and test
           command: |
-            cd ${env:GOPATH}\src\${env:PACKAGE_PATH}
             go get -t ./...
             go test -race ./...
 
