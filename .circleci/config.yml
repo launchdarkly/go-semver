@@ -94,11 +94,8 @@ jobs:
     steps:
       - checkout
       - run: go version
-      - run:
-          name: build and test
-          command: |
-            go get -t ./...
-            go test -race ./...
+      - run: go build ./...
+      - run: go test -race -v ./...
 
   benchmarks:
     docker:
