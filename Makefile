@@ -20,7 +20,7 @@ clean:
 	go clean
 
 test: build
-	go test -race -v ./...
+	go test ./...
 
 benchmarks: build
 	mkdir -p ./build
