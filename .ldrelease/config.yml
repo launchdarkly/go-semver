@@ -1,5 +1,7 @@
 template:
   name: go
+  skip:
+    - test # test suite is very long - run it only in CI
 
 publications:
   - url: https://godoc.org/github.com/launchdarkly/go-semver
