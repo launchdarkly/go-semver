@@ -37,7 +37,7 @@ func parsePositiveNumericString(s string) (int, bool) {
 		if ch < '0' || ch > '9' {
 			return 0, false
 		}
-		if ch == '0' && max > 1 {
+		if ch == '0' && i == 0 && max > 1 {
 			return 0, false // leading zeroes aren't allowed
 		}
 		n = n*10 + (int(ch) - int('0'))
