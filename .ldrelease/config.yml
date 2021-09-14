@@ -1,5 +1,10 @@
-template:
-  name: go
+version: 2
+
+jobs:
+  - docker:
+      image: golang:1.14-buster
+    template:
+      name: go
 
 publications:
   - url: https://godoc.org/github.com/launchdarkly/go-semver
