@@ -9,10 +9,23 @@ The LaunchDarkly SDK team monitors the [issue tracker](https://github.com/launch
 We encourage pull requests and other contributions from the community. Before submitting pull requests, ensure that all temporary or unintended code is removed. Don't worry about adding reviewers to the pull request; the LaunchDarkly SDK team will add themselves. The SDK team will acknowledge all pull requests within two business days.
  
 ## Build instructions
- 
+
 ### Prerequisites
- 
-This project should be built against Go 1.13 or newer.
+
+This project should be built against the lowest supported Go version as described below.
+
+### Bumping the Minimum Go Version
+
+The SDK is tested against three Go versions: the latest, penultimate, and a minimum based on the SDKs usage of Go features.
+
+Whereas the latest and penultimate are updates on a regular cadence to track upstream Go releases, the minimum version
+may be bumped at the discretion of the SDK maintainers to take advantage of new features.
+
+Invoke the following make command, which will update `go.mod`, `testservice/go.mod`, and
+`.github/variables/go-versions.env` (pass the desired Go version):
+```shell
+make bump-min-go-version MIN_GO_VERSION=1.18
+```
 
 ### Building
 

@@ -11,7 +11,11 @@ COVERAGE_PROFILE_RAW_HTML=./build/coverage_raw.html
 COVERAGE_PROFILE_FILTERED=./build/coverage.out
 COVERAGE_PROFILE_FILTERED_HTML=./build/coverage.html
 
-.PHONY: build clean test test-coverage lint
+.PHONY: build clean test test-coverage lint bump-min-go-version
+
+bump-min-go-version:
+	go mod edit -go=$(MIN_GO_VERSION) go.mod
+	cd ./.github/variables && sed -i.bak "s#min=[^ ]*#min=$(MIN_GO_VERSION)#g" go-versions.env && rm go-versions.env.bak
 
 build:
 	go build ./...
