@@ -1,5 +1,5 @@
 # LaunchDarkly Semantic Version Package
-[![Actions Status](https://github.com/launchdarkly/go-semver/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/launchdarkly/go-semver/actions/workflows/ci.yml)
+[![Actions Status](https://github.com/launchdarkly/go-semver/actions/workflows/ci.yml/badge.svg)](https://github.com/launchdarkly/go-semver/actions/workflows/ci.yml)
 
 ## Overview
 
