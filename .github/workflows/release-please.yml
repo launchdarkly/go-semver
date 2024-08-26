@@ -3,7 +3,7 @@ name: Run Release Please
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
