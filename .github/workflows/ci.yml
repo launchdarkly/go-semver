@@ -1,11 +1,11 @@
 name: Build and Test
 on:
   push:
-    branches: [ 'master', 'feat/**' ]
+    branches: [ 'main', 'feat/**' ]
     paths-ignore:
       - '**.md' # Don't run CI on markdown changes.
   pull_request:
-    branches: [ 'master', 'feat/**'  ]
+    branches: [ 'main', 'feat/**'  ]
     paths-ignore:
       - '**.md'
 
