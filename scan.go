@@ -31,7 +31,7 @@ func (s *simpleASCIIScanner) peek() int8 {
 	if s.pos >= s.length {
 		return scannerEOF
 	}
-	var ch uint8 = s.source[s.pos]
+	ch := s.source[s.pos]
 	if ch == 0 || ch > unicode.MaxASCII {
 		return scannerNonASCII
 	}
