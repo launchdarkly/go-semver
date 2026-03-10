@@ -7,7 +7,7 @@ import (
 // ParseMode is an enum-like type used with ParseAs.
 type ParseMode int
 
-var invalidSemverError = errors.New("invalid semantic version")
+var errInvalidSemver = errors.New("invalid semantic version")
 
 const (
 	// ParseModeStrict is the default parsing mode, requiring a strictly correct version string with
@@ -45,46 +45,46 @@ func ParseAs(s string, mode ParseMode) (Version, error) {
 	if mode == ParseModeAllowMissingMinorAndPatch {
 		result.major, term, ok = requirePositiveIntegerComponent(&scanner, dotOrHyphenOrPlusTerminator)
 		if !ok {
-			return Version{}, invalidSemverError
+			return Version{}, errInvalidSemver
 		}
 		if term == '.' {
 			result.minor, term, ok = requirePositiveIntegerComponent(&scanner, dotOrHyphenOrPlusTerminator)
 			if !ok {
-				return Version{}, invalidSemverError
+				return Version{}, errInvalidSemver
 			}
 			if term == '.' {
 				result.patch, term, ok = requirePositiveIntegerComponent(&scanner, hyphenOrPlusTerminator)
 				if !ok {
-					return Version{}, invalidSemverError
+					return Version{}, errInvalidSemver
 				}
 			}
 		}
 	} else {
 		result.major, term, ok = requirePositiveIntegerComponent(&scanner, dotTerminator)
 		if !ok || term != '.' {
-			return Version{}, invalidSemverError
+			return Version{}, errInvalidSemver
 		}
 		result.minor, term, ok = requirePositiveIntegerComponent(&scanner, dotTerminator)
 		if !ok || term != '.' {
-			return Version{}, invalidSemverError
+			return Version{}, errInvalidSemver
 		}
 		result.patch, term, ok = requirePositiveIntegerComponent(&scanner, hyphenOrPlusTerminator)
 		if !ok {
-			return Version{}, invalidSemverError
+			return Version{}, errInvalidSemver
 		}
 	}
 
 	if term == '-' {
 		result.prerelease, term = scanner.readUntil(plusTerminator)
 		if result.prerelease == "" || term == scannerNonASCII || !validatePrerelease(result.prerelease) {
-			return Version{}, invalidSemverError
+			return Version{}, errInvalidSemver
 		}
 	}
 
 	if term == '+' {
 		result.build, term = scanner.readUntil(noTerminator)
 		if result.build == "" || term == scannerNonASCII || !validateBuild(result.build) {
-			return Version{}, invalidSemverError
+			return Version{}, errInvalidSemver
 		}
 	}
 
