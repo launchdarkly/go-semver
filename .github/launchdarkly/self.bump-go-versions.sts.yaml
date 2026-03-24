@@ -1,0 +1,11 @@
+issuer: https://token.actions.githubusercontent.com
+subject_pattern: repo:launchdarkly/go-semver:ref:refs/heads/main
+claim_pattern:
+  event_name: workflow_dispatch|schedule
+  ref: refs/heads/main
+  ref_protected: "true"
+  workflow_ref: launchdarkly/go-semver/.github/workflows/check-go-versions.yml@refs/heads/main
+
+permissions:
+  contents: write
+  pull_requests: write
