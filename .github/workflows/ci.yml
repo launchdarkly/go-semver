@@ -9,6 +9,9 @@ on:
     paths-ignore:
       - '**.md'
 
+permissions:
+  contents: read
+
 jobs:
   go-versions:
     uses: ./.github/workflows/go-versions.yml
@@ -35,9 +38,11 @@ jobs:
       matrix:
         go-version: ${{ fromJSON(needs.go-versions.outputs.matrix) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: 'false'
       - name: Setup Go ${{ matrix.go-version }}
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: ${{ matrix.go-version }}
       - name: Test
