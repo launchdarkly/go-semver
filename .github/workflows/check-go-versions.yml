@@ -36,8 +36,8 @@ jobs:
     needs: check-go-eol
     runs-on: ubuntu-slim
     env:
-      officialLatestVersion: ${{ needs.check-go-eol.outputs.latest }}
-      officialPenultimateVersion: ${{ needs.check-go-eol.outputs.penultimate }}
+      OFFICIAL_LATEST_VERSION: ${{ needs.check-go-eol.outputs.latest }}
+      OFFICIAL_PENULTIMATE_VERSION: ${{ needs.check-go-eol.outputs.penultimate }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -48,11 +48,11 @@ jobs:
         run:  cat ./.github/variables/go-versions.env > $GITHUB_OUTPUT
 
       - name: Update go-versions.env and README.md
-        if: steps.go-versions.outputs.latest != env.officialLatestVersion
+        if: steps.go-versions.outputs.latest != env.OFFICIAL_LATEST_VERSION
         id: update-go-versions
         run: |
-          sed -i -e "s#latest=[^ ]*#latest=${{ env.officialLatestVersion }}#g" \
-                 -e "s#penultimate=[^ ]*#penultimate=${{ env.officialPenultimateVersion }}#g" \
+          sed -i -e "s#latest=[^ ]*#latest=${OFFICIAL_LATEST_VERSION}#g" \
+                 -e "s#penultimate=[^ ]*#penultimate=${OFFICIAL_PENULTIMATE_VERSION}#g" \
                   ./.github/variables/go-versions.env
 
       - name: Create GitHub token
@@ -70,11 +70,11 @@ jobs:
           token: ${{ steps.github-token.outputs.token }}
           add-paths: |
             .github/variables/go-versions.env
-          branch: "launchdarklyreleasebot/update-to-go${{ env.officialLatestVersion }}-${{ matrix.branch }}"
+          branch: "launchdarklyreleasebot/update-to-go${{ env.OFFICIAL_LATEST_VERSION }}-${{ matrix.branch }}"
           author: "LaunchDarklyReleaseBot <LaunchDarklyReleaseBot@launchdarkly.com>"
           committer: "LaunchDarklyReleaseBot <LaunchDarklyReleaseBot@launchdarkly.com>"
           labels: ${{ matrix.branch }}
-          title: "fix(deps): bump supported Go versions to ${{ env.officialLatestVersion }} and ${{ env.officialPenultimateVersion }}"
-          commit-message: "Bumps from Go ${{ steps.go-versions.outputs.latest }} -> ${{ env.officialLatestVersion }} and ${{ steps.go-versions.outputs.penultimate }} -> ${{ env.officialPenultimateVersion }}."
+          title: "fix(deps): bump supported Go versions to ${{ env.OFFICIAL_LATEST_VERSION }} and ${{ env.OFFICIAL_PENULTIMATE_VERSION }}"
+          commit-message: "Bumps from Go ${{ steps.go-versions.outputs.latest }} -> ${{ env.OFFICIAL_LATEST_VERSION }} and ${{ steps.go-versions.outputs.penultimate }} -> ${{ env.OFFICIAL_PENULTIMATE_VERSION }}."
           body: |
             - [ ] I have triggered CI on this PR (either close & reopen this PR in Github UI, or `git commit -m "run ci" --allow-empty && git push`)

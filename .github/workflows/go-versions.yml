@@ -36,7 +36,7 @@ on:
 
 jobs:
   go-versions:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     outputs:
       latest: ${{ steps.set-env.outputs.latest }}
       penultimate: ${{ steps.set-env.outputs.penultimate }}
@@ -51,8 +51,12 @@ jobs:
       - name: Set Go Version Matrices
         id: set-matrix
         run: |
-          if [ "${{ steps.set-env.outputs.penultimate }}" == "${{ steps.set-env.outputs.min }}" ]; then
-            echo "all=[\"${{ steps.set-env.outputs.latest }}\",\"${{ steps.set-env.outputs.penultimate }}\"]" >> $GITHUB_OUTPUT
+          if [ "${STEPS_SET_ENV_OUTPUTS_PENULTIMATE}" == "${STEPS_SET_ENV_OUTPUTS_MIN}" ]; then
+            echo "all=[\"${STEPS_SET_ENV_OUTPUTS_LATEST}\",\"${STEPS_SET_ENV_OUTPUTS_PENULTIMATE}\"]" >> $GITHUB_OUTPUT
           else
-            echo "all=[\"${{ steps.set-env.outputs.latest }}\",\"${{ steps.set-env.outputs.penultimate }}\",\"${{ steps.set-env.outputs.min }}\"]" >> $GITHUB_OUTPUT
+            echo "all=[\"${STEPS_SET_ENV_OUTPUTS_LATEST}\",\"${STEPS_SET_ENV_OUTPUTS_PENULTIMATE}\",\"${STEPS_SET_ENV_OUTPUTS_MIN}\"]" >> $GITHUB_OUTPUT
           fi
+        env:
+          STEPS_SET_ENV_OUTPUTS_PENULTIMATE: ${{ steps.set-env.outputs.penultimate }}
+          STEPS_SET_ENV_OUTPUTS_MIN: ${{ steps.set-env.outputs.min }}
+          STEPS_SET_ENV_OUTPUTS_LATEST: ${{ steps.set-env.outputs.latest }}
