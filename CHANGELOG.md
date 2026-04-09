@@ -2,6 +2,13 @@
 
 All notable changes to the project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org).
 
+## [1.0.4](https://github.com/launchdarkly/go-semver/compare/v1.0.3...v1.0.4) (2026-04-09)
+
+
+### Bug Fixes
+
+* Bump minimum go to 1.22 ([#21](https://github.com/launchdarkly/go-semver/issues/21)) ([bb359f0](https://github.com/launchdarkly/go-semver/commit/bb359f01ab96febd3f47643c462b1ac4fb1ad321))
+
 ## [1.0.3](https://github.com/launchdarkly/go-semver/compare/1.0.2...v1.0.3) (2024-08-21)
 
 
