@@ -1,6 +1,6 @@
 module github.com/launchdarkly/go-semver
 
-go 1.22
+go 1.26
 
 require github.com/stretchr/testify v1.6.1
 
